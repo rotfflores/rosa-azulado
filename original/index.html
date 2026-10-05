@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F7F4ED">
+  <meta name="description" content="Un pequeño secreto, una gran emoción. Abre tu invitación a nuestra revelación de bebé.">
+  <title>¿Niña o niño? · Una invitación especial</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fondo-rosa-azul.jpg" as="image">
+  <link rel="preload" href="assets/fredoka-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="television.css">
+  <link rel="stylesheet" href="parents.css">
+  <script src="config.js"></script>
+  <script>
+    // Restaurar antes del primer dibujo para evitar que el regalo parpadee al recargar.
+    try {
+      if (sessionStorage.getItem('baby-invitation-opened') === 'yes') {
+        document.documentElement.dataset.restored = 'true';
+      }
+    } catch (_) { /* La invitación también funciona sin almacenamiento. */ }
+  </script>
+  <script src="app.js" defer></script>
+  <script src="television.js" defer></script>
+  <script src="parents.js" defer></script>
+</head>
+<body>
+  <main class="invitation" id="invitation" data-stage="closed">
+    <div class="ambient ambient--pink" aria-hidden="true"></div>
+    <div class="ambient ambient--blue" aria-hidden="true"></div>
+    <div class="paper-grain" aria-hidden="true"></div>
+
+    <section class="entrance" id="entrance" aria-labelledby="entrance-title">
+      <div class="entrance-header">
+        <div class="little-star" aria-hidden="true">
+          <svg viewBox="0 0 40 40"><path d="M20 3c0 12-5 17-17 17 12 0 17 5 17 17 0-12 5-17 17-17C25 20 20 15 20 3Z"/></svg>
+        </div>
+        <p class="eyebrow">Una sorpresa llena de amor</p>
+        <h1 id="entrance-title">Tenemos un<br>pequeño <em>secreto…</em></h1>
+        <span class="fine-line" aria-hidden="true"></span>
+      </div>
+
+      <div class="gift-scene">
+        <div class="floating-particles" aria-hidden="true">
+          <i class="ambient-dot ambient-dot--1"></i><i class="ambient-dot ambient-dot--2"></i>
+          <i class="ambient-dot ambient-dot--3"></i><i class="ambient-dot ambient-dot--4"></i>
+          <svg class="ambient-star ambient-star--1" viewBox="0 0 24 24"><path d="M12 0c0 9-3 12-12 12 9 0 12 3 12 12 0-9 3-12 12-12-9 0-12-3-12-12Z"/></svg>
+          <svg class="ambient-star ambient-star--2" viewBox="0 0 24 24"><path d="M12 0c0 9-3 12-12 12 9 0 12 3 12 12 0-9 3-12 12-12-9 0-12-3-12-12Z"/></svg>
+        </div>
+        <div class="gift-shadow" aria-hidden="true"></div>
+        <div class="gift-float">
+          <div class="gift-art" aria-hidden="true">
+            <div class="gift-glow"></div>
+            <svg class="gift-box" viewBox="0 0 360 340" fill="none">
+              <defs>
+                <linearGradient id="paper-front" x1="64" y1="160" x2="253" y2="302" gradientUnits="userSpaceOnUse"><stop stop-color="#fffaf0"/><stop offset=".55" stop-color="#f2e4ce"/><stop offset="1" stop-color="#e7d4b9"/></linearGradient>
+                <linearGradient id="paper-side" x1="250" y1="181" x2="306" y2="279" gradientUnits="userSpaceOnUse"><stop stop-color="#daceb9"/><stop offset="1" stop-color="#c4b294"/></linearGradient>
+                <linearGradient id="lid-front" x1="59" y1="142" x2="255" y2="175" gradientUnits="userSpaceOnUse"><stop stop-color="#fffaf1"/><stop offset="1" stop-color="#e8d8bf"/></linearGradient>
+                <linearGradient id="ribbon-pink" x1="120" y1="154" x2="171" y2="294" gradientUnits="userSpaceOnUse"><stop stop-color="#db9ca8"/><stop offset=".35" stop-color="#f2c7ce"/><stop offset=".7" stop-color="#e2a5b2"/><stop offset="1" stop-color="#bd7d8d"/></linearGradient>
+                <linearGradient id="ribbon-blue" x1="267" y1="143" x2="290" y2="285" gradientUnits="userSpaceOnUse"><stop stop-color="#c3dce4"/><stop offset=".5" stop-color="#92bccb"/><stop offset="1" stop-color="#6c9caa"/></linearGradient>
+                <pattern id="paper-speckles" width="22" height="19" patternUnits="userSpaceOnUse"><circle cx="3" cy="5" r=".6" fill="#a88b68" opacity=".18"/><circle cx="15" cy="14" r=".5" fill="#fff" opacity=".65"/></pattern>
+                <filter id="box-shadow" x="-30%" y="-30%" width="170%" height="180%"><feDropShadow dx="1" dy="6" stdDeviation="5" flood-color="#79634b" flood-opacity=".12"/></filter>
+              </defs>
+              <g class="gift-body" filter="url(#box-shadow)">
+                <path d="m65 155 184 22 57-36-185-24Z" fill="#bda98d"/>
+                <path d="m77 156 172 17 43-28-171-19Z" fill="#8d7960"/>
+                <path d="m65 155 184 22v125L65 280Z" fill="url(#paper-front)"/>
+                <path d="m249 177 57-36v124l-57 37Z" fill="url(#paper-side)"/>
+                <path d="m65 155 184 22v125L65 280Z" fill="url(#paper-speckles)"/>
+                <path d="m249 178 57-36v124l-57 36Z" fill="url(#paper-speckles)"/>
+                <path d="m67 157 180 22v120" stroke="#fffaf0" stroke-opacity=".6"/>
+                <path d="m67 278 180 21" stroke="#ad9472" stroke-opacity=".25"/>
+                <g class="ribbon-front"><path d="m134 163 35 4v125l-35-4Z" fill="url(#ribbon-pink)"/><path d="m137 165 2 123m27-121v125" stroke="#fbe1e5" stroke-opacity=".55"/></g>
+                <g class="ribbon-side"><path d="m269 164 19-12v124l-19 13Z" fill="url(#ribbon-blue)"/><path d="m272 164 1 122" stroke="#deedf1" stroke-opacity=".55"/></g>
+                <g class="gift-tag" transform="rotate(8 207 213)">
+                  <path d="M202 169q-11 17 4 32" stroke="#9e8268" stroke-width="1"/>
+                  <path d="m187 198 18-10 18 10v37h-36Z" fill="#fcf6e9" stroke="#d6c2a7" stroke-width=".7"/>
+                  <circle cx="205" cy="198" r="2.4" fill="#c7b292"/>
+                  <text x="205" y="217" text-anchor="middle" fill="#887159" font-family="Nunito, Segoe UI, sans-serif" font-size="8" font-weight="600">para</text>
+                  <text x="205" y="228" text-anchor="middle" fill="#887159" font-family="Fredoka, Nunito, sans-serif" font-size="11" font-weight="500">ti</text>
+                </g>
+              </g>
+              <g class="gift-lid" filter="url(#box-shadow)">
+                <path d="m54 139 58-38 207 25-61 39Z" fill="#f8eddc"/>
+                <path d="m54 139 204 26v19L54 159Z" fill="url(#lid-front)"/>
+                <path d="m258 165 61-39v19l-61 39Z" fill="#c9b899"/>
+                <path d="m54 139 204 26 61-39" stroke="#fffcf5" stroke-width="1.2"/>
+                <path d="m54 158 204 25 60-38" stroke="#ad9472" stroke-opacity=".24"/>
+                <path d="m54 139 58-38 207 25-61 39Z" fill="url(#paper-speckles)"/>
+                <g class="ribbon-lid"><path d="m129 149 58-39 38 5-59 39v18l-37-5Z" fill="#eab8c1"/><path d="m134 149 58-37" stroke="#fbe1e5" stroke-width="2" opacity=".7"/><path d="m142 105 64 7 90 28-23 15-88-37-62-7Z" fill="#a6c9d5" opacity=".92"/></g>
+              </g>
+            </svg>
+          </div>
+          <button class="bow-button" id="open-gift" type="button" aria-label="Desatar el moño y abrir la invitación" aria-describedby="opening-hint">
+            <svg class="gift-bow" viewBox="0 0 200 160" fill="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="bow-pink" x1="24" y1="25" x2="104" y2="100" gradientUnits="userSpaceOnUse"><stop stop-color="#f5d2d8"/><stop offset=".35" stop-color="#e9b4c1"/><stop offset=".65" stop-color="#cd8a9d"/><stop offset="1" stop-color="#f3c8d1"/></linearGradient>
+                <linearGradient id="bow-blue" x1="173" y1="23" x2="105" y2="103" gradientUnits="userSpaceOnUse"><stop stop-color="#d0e4ea"/><stop offset=".35" stop-color="#accbd8"/><stop offset=".7" stop-color="#7ca5b8"/><stop offset="1" stop-color="#c3dce4"/></linearGradient>
+                <linearGradient id="bow-knot" x1="87" y1="67" x2="114" y2="96" gradientUnits="userSpaceOnUse"><stop stop-color="#f3d4d9"/><stop offset=".5" stop-color="#c995a8"/><stop offset="1" stop-color="#a2bdce"/></linearGradient>
+                <filter id="bow-shadow" x="-40%" y="-40%" width="180%" height="200%"><feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#795b59" flood-opacity=".19"/></filter>
+              </defs>
+              <g filter="url(#bow-shadow)">
+                <g class="bow-tail bow-tail--pink"><path d="M96 78c-17 14-27 37-41 60l18-4 9 15c8-26 12-44 25-64Z" fill="url(#bow-pink)"/><path d="M97 85c-12 15-19 30-27 46" stroke="#ffe7eb" stroke-opacity=".5" stroke-width="2"/></g>
+                <g class="bow-tail bow-tail--blue"><path d="M103 81c19 10 38 22 51 46l-19-3-7 15c-7-25-19-40-33-51Z" fill="url(#bow-blue)"/><path d="M107 88c15 13 26 20 31 32" stroke="#e4f1f5" stroke-opacity=".55" stroke-width="2"/></g>
+                <g class="bow-loop bow-loop--pink"><path d="M101 78C84 52 50 15 28 30 4 47 38 90 90 88Z" fill="url(#bow-pink)"/><path d="M88 77C68 57 45 32 30 39c-8 14 22 37 58 38Z" fill="#c890a0"/><path d="M86 76C64 63 43 45 30 40" stroke="#a9657c" stroke-width="1.5" opacity=".4"/><path d="M99 76C80 48 52 20 32 31" stroke="#f9e0e5" stroke-width="2" opacity=".85"/></g>
+                <g class="bow-loop bow-loop--blue"><path d="M101 78c18-28 46-64 70-53 30 14 6 54-61 65Z" fill="url(#bow-blue)"/><path d="M113 78c18-17 44-46 58-43 12 13-19 37-58 43Z" fill="#7ba5b8"/><path d="M116 76c22-11 42-30 55-41" stroke="#58899f" stroke-width="1.5" opacity=".4"/><path d="M105 76c19-28 46-56 66-49" stroke="#e6f2f5" stroke-width="2" opacity=".8"/></g>
+                <g class="bow-knot"><path d="M89 68q13-7 25 2l-3 25q-15 5-25-5Z" fill="url(#bow-knot)"/><path d="m94 70-3 19m17-16-2 18" stroke="#fff0f0" stroke-opacity=".55"/></g>
+              </g>
+            </svg>
+          </button>
+        </div>
+        <div class="opening-particles" id="opening-particles" aria-hidden="true"></div>
+      </div>
+
+      <div class="entrance-footer">
+        <p class="opening-hint" id="opening-hint">Toca el moño para descubrir tu invitación</p>
+        <p class="small-note">Lo más bonito está por venir</p>
+        <a class="skip-link" id="skip-intro" href="#cover">Ver invitación <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="cover" id="cover" aria-labelledby="cover-title">
+      <div class="cover-inner">
+        <p class="eyebrow cover-reveal cover-eyebrow">Nuestra dulce espera</p>
+        <div class="cover-heading">
+          <h2 class="cover-reveal" id="cover-title" tabindex="-1">¿Niña <em>o</em> niño?</h2>
+          <p class="cover-subtitle cover-reveal">Un pequeño secreto, una gran emoción</p>
+        </div>
+        <div class="photo-scene" id="photo-scene">
+          <img class="cover-photo" id="cover-photo" src="assets/girl-pink-boy-blue.jpg" width="2000" height="1335" alt="Una mitad rosa con zapatitos, chupón y letras GIRL, y una mitad azul con tenis, chupón y letras BOY." fetchpriority="high" decoding="async">
+          <div class="photo-edge" aria-hidden="true"></div>
+          <button type="button" class="color-half color-half--pink" data-color="pink" aria-label="Iluminar la mitad rosa"><span class="half-glow" aria-hidden="true"></span></button>
+          <button type="button" class="color-half color-half--blue" data-color="blue" aria-label="Iluminar la mitad azul"><span class="half-glow" aria-hidden="true"></span></button>
+          <div class="photo-particles" id="photo-particles" aria-hidden="true"></div>
+        </div>
+        <div class="cover-details">
+          <div class="parents cover-reveal" aria-label="Nombres de los papás">
+            <span data-parent="mom">Mariana Robles</span>
+            <span class="ampersand" aria-hidden="true">&amp;</span>
+            <span data-parent="dad">Andrés Salazar</span>
+          </div>
+          <div class="tiny-divider cover-reveal" aria-hidden="true"><span></span><svg viewBox="0 0 20 20"><path d="M10 17S2 12 2 6.5a4 4 0 0 1 8-1 4 4 0 0 1 8 1C18 12 10 17 10 17Z"/></svg><span></span></div>
+          <p class="cover-whisper cover-reveal">Dos posibilidades. El mismo amor infinito.</p>
+          <a class="discover-button cover-reveal" id="discover-more" href="#television-section">Descubrir más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="tv-section" id="television-section" aria-labelledby="tv-title" tabindex="-1">
+      <div class="tv-section-inner">
+        <header class="tv-heading">
+          <p class="eyebrow">Unos invitados muy curiosos</p>
+          <h2 id="tv-title">Ellos también<br>quieren saber…</h2>
+          <p class="tv-question">¿Niña <span>o</span> niño?</p>
+        </header>
+
+        <div class="tv-set" id="tv-set" data-power="off">
+          <div class="tv-antenna" aria-hidden="true"><span></span><span></span><i></i></div>
+          <div class="tv-cabinet">
+            <div class="tv-bezel">
+              <div class="tv-screen" id="tv-screen" style="--video-ratio: 624 / 352">
+                <video id="invitation-video" preload="metadata" playsinline aria-label="Video de personajes que también quieren saber si será niña o niño"></video>
+                <div class="tv-screen-reflection" aria-hidden="true"></div>
+                <div class="tv-off-screen" id="tv-off-screen">
+                  <svg class="tv-off-symbol" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 8v16M14 13a16 16 0 1 0 20 0"/></svg>
+                  <p>Toca el botón<br>para encender</p>
+                  <span>La curiosidad también se contagia</span>
+                </div>
+                <div class="tv-interference" id="tv-interference" hidden aria-hidden="true"><span></span></div>
+                <div class="tv-play-overlay" id="tv-play-overlay" hidden>
+                  <button type="button" class="tv-screen-play" id="tv-screen-play" aria-label="Reproducir el video">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 11 7-11 7Z"/></svg>
+                    <span>Reproducir</span>
+                  </button>
+                </div>
+                <div class="tv-error" id="tv-error" hidden role="alert">
+                  <p>No pudimos cargar el video.</p>
+                  <button type="button" id="tv-retry">Reintentar</button>
+                </div>
+                <button type="button" class="tv-close-expanded" id="tv-close-expanded" aria-label="Cerrar vista ampliada" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+              </div>
+            </div>
+            <div class="tv-panel">
+              <div class="tv-brand" aria-hidden="true">dulce espera<span>Momentos que nos unen</span></div>
+              <button type="button" class="tv-power-button" id="tv-power" aria-label="Encender televisión" aria-pressed="false" aria-controls="invitation-video" aria-describedby="tv-power-state">
+                <span class="tv-power-face"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v9M6.5 5.8a8 8 0 1 0 11 0"/></svg></span>
+                <span id="tv-power-label">Encender</span>
+              </button>
+              <div class="tv-remote" role="group" aria-label="Controles del video">
+                <button type="button" id="tv-play-pause" class="tv-remote-button" aria-label="Reproducir video" disabled>
+                  <svg class="tv-icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 11 7-11 7Z"/></svg>
+                  <svg class="tv-icon-pause" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M8 5v14M16 5v14"/></svg>
+                  <span>Reproducir</span>
+                </button>
+                <button type="button" id="tv-sound" class="tv-remote-button" aria-label="Silenciar sonido" aria-pressed="false">
+                  <svg class="tv-icon-sound" viewBox="0 0 24 24" aria-hidden="true"><path d="m11 5-5 4H3v6h3l5 4ZM15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg>
+                  <svg class="tv-icon-muted" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="m11 5-5 4H3v6h3l5 4Zm5 4 5 6m0-6-5 6"/></svg>
+                  <span>Silenciar</span>
+                </button>
+                <button type="button" id="tv-restart" class="tv-remote-button" aria-label="Volver a ver desde el inicio" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10a8 8 0 1 1 1 8M4 4v6h6"/></svg><span>Volver a ver</span></button>
+                <button type="button" id="tv-expand" class="tv-remote-button" aria-label="Ampliar video" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H4v5m11-5h5v5M4 15v5h5m6 0h5v-5"/></svg><span>Ampliar</span></button>
+              </div>
+              <div class="tv-speaker" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+            <div class="tv-indicator-row"><span class="tv-indicator" aria-hidden="true"></span><span id="tv-power-state">Apagada</span><span class="tv-frequency" aria-hidden="true">PINK / BLUE</span></div>
+          </div>
+          <div class="tv-feet" aria-hidden="true"><span></span><span></span></div>
+          <div class="tv-floor-shadow" aria-hidden="true"></div>
+        </div>
+
+        <p class="tv-status" id="tv-status" role="status" aria-live="polite">Enciéndela cuando quieras. Puedes seguir descubriendo.</p>
+
+        <div class="tv-ending" id="tv-ending" hidden>
+          <span class="tv-ending-line" aria-hidden="true"></span>
+          <p>Ahora queremos conocer tu corazonada</p>
+          <a class="discover-button tv-team-button" id="tv-team" href="#vote-section">¿Cuál es tu equipo? <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a>
+        </div>
+        <a class="tv-continue" id="tv-continue" href="#parents-message">Seguir descubriendo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></a>
+      </div>
+    </section>
+    <section class="parents-section" id="parents-message" aria-labelledby="parents-title" tabindex="-1">
+      <div class="parents-story">
+        <div class="parents-keepsake" aria-hidden="true"><svg viewBox="0 0 58 40"><path d="M21 33S5 23 5 12a8 8 0 0 1 16-2 8 8 0 0 1 16 2c0 11-16 21-16 21Z"/><path d="M37 33S21 23 21 12a8 8 0 0 1 16-2 8 8 0 0 1 16 2c0 11-16 21-16 21Z"/></svg></div>
+        <h2 class="parents-reveal parents-title" id="parents-title">Nuestro amor tiene una nueva sorpresa</h2>
+        <p class="parents-reveal parents-copy" id="parents-copy">Una personita muy especial está por llegar a nuestras vidas. Todavía guardamos un pequeño secreto, y queremos compartir contigo la emoción de descubrirlo. ¡Acompáñanos en este momento que recordaremos siempre!</p>
+        <p class="parents-reveal parents-signature" id="parents-signature">Con amor, Mariana Robles y Andrés Salazar.</p>
+      </div>
+
+      <figure class="family-photo" id="interactive-photo" aria-labelledby="cloud-hint">
+        <div class="family-photo-frame" id="family-photo-frame" data-revealed="false">
+          <button class="family-photo-opener" id="family-photo-opener" type="button" aria-label="Ampliar espacio reservado para nuestra fotografía" aria-haspopup="dialog" aria-controls="family-photo-dialog" disabled>
+            <img class="family-photo-image" id="family-photo-image" alt="Fotografía de los futuros papás o del ultrasonido" loading="lazy" decoding="async" draggable="false" hidden>
+            <span class="family-photo-placeholder" id="family-photo-placeholder">
+              <svg viewBox="0 0 80 70" aria-hidden="true"><path d="M11 19h15l6-8h17l6 8h14v39H11Z"/><circle cx="40" cy="38" r="13"/><path d="M38 31c-8-6-13 7 2 14 15-7 10-20 2-14l-2 2Z"/><path d="M61 26h2"/></svg>
+              <span class="photo-placeholder-title">Nuestro primer recuerdo</span>
+              <span class="photo-placeholder-note">Espacio reservado para nuestra fotografía</span>
+            </span>
+            <span class="photo-zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6M10 7v6m-3-3h6"/></svg></span>
+          </button>
+
+          <svg class="cloud-definitions" width="0" height="0" aria-hidden="true"><defs>
+            <linearGradient id="parents-cloud-pink" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#fffdfb"/><stop offset=".55" stop-color="#f9f3f5"/><stop offset="1" stop-color="#e3ccd9"/></linearGradient>
+            <linearGradient id="parents-cloud-blue" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#fcfeff"/><stop offset=".55" stop-color="#f2f7f9"/><stop offset="1" stop-color="#cbdee8"/></linearGradient>
+            <symbol id="parents-cloud-shape" viewBox="0 0 240 140"><path d="M42 124C19 124 4 108 4 87c0-18 12-32 30-36C34 26 54 10 78 10c16 0 29 6 38 19 7-6 16-9 26-9 25 0 45 18 48 42 23-5 46 12 46 36 0 15-14 26-32 26Z" stroke="#fff" stroke-opacity=".65" stroke-width="1"/></symbol>
+          </defs></svg>
+
+          <div class="cloud-layer" id="cloud-layer">
+            <div class="cloud-mist" aria-hidden="true"></div>
+            <button class="photo-cloud photo-cloud--1" type="button" data-cloud="1" aria-label="Apartar nube 1 de 8" aria-describedby="cloud-hint"><svg viewBox="0 0 240 140" aria-hidden="true"><use href="#parents-cloud-shape" fill="url(#parents-cloud-pink)"/></svg></button>
+            <button class="photo-cloud photo-cloud--2" type="button" data-cloud="2" aria-label="Apartar nube 2 de 8" aria-describedby="cloud-hint"><svg viewBox="0 0 240 140" aria-hidden="true"><use href="#parents-cloud-shape" fill="url(#parents-cloud-blue)"/></svg></button>
+            <button class="photo-cloud photo-cloud--3" type="button" data-cloud="3" aria-label="Apartar nube 3 de 8" aria-describedby="cloud-hint"><svg viewBox="0 0 240 140" aria-hidden="true"><use href="#parents-cloud-shape" fill="url(#parents-cloud-blue)"/></svg></button>
+            <button class="photo-cloud photo-cloud--4" type="button" data-cloud="4" aria-label="Apartar nube 4 de 8" aria-describedby="cloud-hint"><svg viewBox="0 0 240 140" aria-hidden="true"><use href="#parents-cloud-shape" fill="url(#parents-cloud-pink)"/></svg></button>
+            <button class="photo-cloud photo-cloud--5" type="button" data-cloud="5" aria-label="Apartar nube 5 de 8" aria-describedby="cloud-hint"><svg viewBox="0 0 240 140" aria-hidden="true"><use href="#parents-cloud-shape" fill="url(#parents-cloud-pink)"/></svg></button>
+            <button class="photo-cloud photo-cloud--6" type="button" data-cloud="6" aria-label="Apartar nube 6 de 8" aria-describedby="cloud-hint"><svg viewBox="0 0 240 140" aria-hidden="true"><use href="#parents-cloud-shape" fill="url(#parents-cloud-blue)"/></svg></button>
+            <button class="photo-cloud photo-cloud--7" type="button" data-cloud="7" aria-label="Apartar nube 7 de 8" aria-describedby="cloud-hint"><svg viewBox="0 0 240 140" aria-hidden="true"><use href="#parents-cloud-shape" fill="url(#parents-cloud-blue)"/></svg></button>
+            <button class="photo-cloud photo-cloud--8" type="button" data-cloud="8" aria-label="Apartar nube 8 de 8" aria-describedby="cloud-hint"><svg viewBox="0 0 240 140" aria-hidden="true"><use href="#parents-cloud-shape" fill="url(#parents-cloud-pink)"/></svg></button>
+          </div>
+        </div>
+        <figcaption class="cloud-hint" id="cloud-hint">Aparta las nubes y descubre quién está detrás</figcaption>
+      </figure>
+      <div class="parents-photo-actions">
+        <button class="view-family-photo" id="view-family-photo" type="button">Ver fotografía <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+        <a class="parents-continue" id="parents-continue" href="#event-section">Seguir descubriendo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></a>
+      </div>
+      <div class="family-photo-outcome" id="family-photo-outcome" hidden>
+        <p>La aventura más bonita apenas comienza</p>
+        <a class="discover-button" id="parents-event" href="#event-section">¿Cuándo nos vemos? <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a>
+      </div>
+      <p class="sr-only" id="family-photo-status" role="status" aria-live="polite"></p>
+    </section>
+    <p class="sr-only" id="invitation-status" role="status" aria-live="polite"></p>
+  </main>
+  <!-- Puntos de conexión. Reemplaza las anclas por las futuras secciones. -->
+  <div id="vote-section" class="next-section-anchor" tabindex="-1" aria-label="Futura sección de votación"></div>
+  <!-- Esta futura sección contendrá la cuenta regresiva, fecha, hora y ubicación. -->
+  <div id="event-section" class="next-section-anchor" tabindex="-1" aria-label="Futura cuenta regresiva y datos del evento"></div>
+  <dialog class="family-photo-dialog" id="family-photo-dialog" aria-labelledby="family-photo-dialog-title">
+    <div class="family-photo-dialog-header"><h2 id="family-photo-dialog-title">Nuestra fotografía</h2><button type="button" id="close-family-photo" aria-label="Cerrar fotografía ampliada"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg><span>Cerrar</span></button></div>
+    <img id="family-photo-large" alt="" draggable="false" hidden>
+    <div class="family-photo-modal-placeholder" id="family-photo-modal-placeholder"><svg viewBox="0 0 80 70" aria-hidden="true"><path d="M11 19h15l6-8h17l6 8h14v39H11Z"/><circle cx="40" cy="38" r="13"/></svg><p>Un recuerdo que pronto compartiremos</p><span>Espacio reservado para nuestra fotografía</span></div>
+  </dialog>
+  <noscript><style>.entrance{display:none}.cover{visibility:visible;opacity:1;position:relative}.cover-reveal{opacity:1;transform:none}.color-half,.next-section-anchor{display:none}</style><p class="noscript-note">Activa JavaScript para abrir el regalo y jugar con los colores.</p></noscript>
+</body>
+</html>

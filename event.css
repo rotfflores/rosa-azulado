@@ -1,0 +1,142 @@
+/* Calendario del evento: sólo usa las fuentes y la paleta de la invitación. */
+.event-section { display: none; padding: 65px 22px 75px; text-align: center; scroll-margin-top: 24px; color: var(--ink-strong, var(--ink)); }
+[data-stage="cover"] .event-section, html[data-restored="true"] .event-section { display: block; }
+.event-section:focus { outline: none; }
+.event-section [hidden] { display: none !important; }
+.event-heading { max-width: 560px; margin: 0 auto; }
+.event-keepsake { width: 38px; margin: 0 auto 20px; }
+.event-keepsake svg { width: 100%; fill: none; stroke: var(--accent-blue); stroke-width: 1.35; }
+.event-keepsake path:last-child { stroke: var(--accent-pink); }
+.event-heading h2 { margin: 0; font-family: var(--serif); font-size: clamp(30px, 4vw, 43px); font-weight: 500; line-height: 1.15; letter-spacing: -.01em; text-wrap: balance; }
+.event-countdown-message { min-height: 24px; margin: 18px 0 22px; color: var(--ink-soft); font-size: 14px; font-weight: 600; line-height: 1.6; }
+.event-countdown { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; width: min(100%,430px); margin: 0 auto 48px; }
+.countdown-tile { position: relative; padding: 14px 4px 12px; border: 1px solid #ffffffb3; border-radius: 12px; background: linear-gradient(#fffdf9,#f8f2eb); box-shadow: 0 4px 0 -1px #e5d9dbe6, 0 9px 19px -13px #68536966; perspective: 260px; }
+.countdown-tile::before { content: ""; position: absolute; left: 8px; right: 8px; top: 39%; height: 1px; background: #a28e9e1c; }
+.countdown-tile::after { content: ""; position: absolute; width: 3px; height: 10px; left: -2px; top: 32%; border-radius: 4px; background: var(--pink); box-shadow: 0 1px 2px #68536922; }
+.countdown-tile:nth-child(even)::after { background: var(--blue); }
+.countdown-number { position: relative; display: block; min-height: 44px; font-family: var(--serif); font-size: calc(clamp(27px,8vw,38px) * var(--digit-scale,1)); font-variant-numeric: tabular-nums; font-weight: 500; line-height: 44px; transform-origin: center; }
+.countdown-number.is-flipping { animation: number-leaf 260ms ease-out; }
+.countdown-label { display: block; font-size: 10px; letter-spacing: .045em; color: var(--ink-soft); }
+.desk-calendar { position: relative; isolation: isolate; width: min(100%,420px); margin: 0 auto; padding: 0 5px 14px; perspective: 1000px; }
+.calendar-paper { position: absolute; z-index: -1; inset: 6px 0 11px; background: #fffaf3; border: 1px solid #fffefa99; border-radius: 19px; transform: rotate(-2deg); box-shadow: 0 28px 45px -29px #59445f88; }
+.desk-calendar::before { content: ""; position: absolute; z-index: -2; inset: 12px 5px 6px; border-radius: 19px; background: #dce8ed; transform: rotate(1.5deg); }
+.calendar-rings { position: absolute; z-index: 5; top: -12px; left: 18%; right: 18%; display: flex; justify-content: space-between; pointer-events: none; }
+.calendar-rings span { width: 12px; height: 35px; border: 3px solid #b9a4b3; border-radius: 8px; background: linear-gradient(90deg,#e7dee2,#fffdf8,#b9a4b3); box-shadow: 1px 2px 3px #6e536f25; }
+.calendar-rings span:last-child { border-color: #9bb9c6; background: linear-gradient(90deg,#c9d8de,#fffdf8,#9bb9c6); }
+.calendar-front { position: relative; z-index: 2; overflow: hidden; background: #fffaf3; border: 1px solid #ffffffbb; border-radius: 18px; box-shadow: 0 9px 18px -15px #6d526877; transform-origin: center top; backface-visibility: hidden; }
+.desk-calendar.is-opening .calendar-front { animation: calendar-paper-lift 480ms ease; }
+.calendar-month { position: relative; z-index: 1; margin: 0; padding: 28px 12px 18px; background: linear-gradient(110deg,color-mix(in srgb,var(--pink) 60%,#fffaf3),color-mix(in srgb,var(--blue) 60%,#fffaf3)); color: var(--ink-strong); font-family: var(--serif); font-size: 21px; font-weight: 400; letter-spacing: .025em; border-bottom: 1px solid #d8c6cd42; }
+.calendar-month::first-letter { text-transform: uppercase; }
+.calendar-date { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; padding: 19px 18px 22px; }
+.calendar-day { min-height: 100px; font-family: var(--serif); font-size: 92px; line-height: 1.1; font-weight: 400; font-variant-numeric: tabular-nums; color: var(--accent-pink); }
+.calendar-weekday { margin-top: 2px; color: var(--accent-blue); font-size: 15px; font-weight: 700; }
+.calendar-weekday::first-letter { text-transform: uppercase; }
+.calendar-readable-date { max-width: 100%; min-height: 20px; margin-top: 10px; font-size: 12px; color: var(--ink-soft); line-height: 1.6; overflow-wrap: anywhere; }
+.calendar-lifting-sheet { position: absolute; inset: 75px 0 0; pointer-events: none; opacity: .45; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='g'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Cpath fill='%23a09089' opacity='.08' filter='url(%23g)' d='M0 0h100v100H0z'/%3E%3C/svg%3E"); }
+.calendar-lifting-sheet span { position: absolute; width: 3px; height: 20px; border-radius: 50%; background: #c8bcc24d; left: -1px; top: 38%; }
+.calendar-lifting-sheet span:nth-child(2) { left: auto; right: -1px; }
+.calendar-lifting-sheet span:last-child { width: 30px; height: 30px; top: auto; bottom: 0; left: auto; right: 0; border-radius: 14px 0 0; background: linear-gradient(135deg,#fffaf3 45%,#e8dde159 48%,#fffdfa 85%); }
+.calendar-tab { position: relative; z-index: 3; display: inline-flex; align-items: center; justify-content: center; gap: 9px; width: 100%; min-height: 48px; padding: 13px; border: 0; border-top: 1px dashed #b79baa6e; background: #f5e6ed8a; color: var(--accent-pink); font-size: 12px; font-weight: 700; cursor: pointer; }
+.calendar-tab svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.5; transition: transform 300ms; }
+[data-open="true"] .calendar-tab svg { transform: rotate(180deg); }
+.calendar-tab:focus-visible { outline-offset: -6px; }
+.event-details { position: relative; z-index: 1; display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 380ms ease,opacity 280ms; }
+[data-open="true"] .event-details { grid-template-rows: 1fr; opacity: 1; }
+.event-details-clip { overflow: hidden; min-height: 0; }
+.event-details-card { padding: 28px 25px 25px; background: linear-gradient(135deg,#fffdf9,#f2f8fa); border: 1px solid #fffefa99; border-top: 0; border-radius: 0 0 16px 16px; text-align: left; }
+.event-details h3 { margin: 0 0 22px; font-family: var(--serif); font-size: 25px; font-weight: 400; line-height: 1.2; text-wrap: balance; }
+.event-information { margin: 0; }
+.event-information div + div { margin-top: 18px; }
+.event-information dt { color: var(--accent-blue); font-weight: 700; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; }
+.event-information dd { margin: 5px 0 0; font-size: 14px; line-height: 1.65; overflow-wrap: anywhere; user-select: text; }
+.event-host-note { margin: 22px 0 0; padding-top: 18px; border-top: 1px solid #b5a8b033; font-size: 13px; font-style: italic; line-height: 1.7; white-space: pre-line; overflow-wrap: anywhere; }
+.calendar-base { position: absolute; z-index: -3; bottom: -4px; left: 9%; right: 9%; height: 38px; border-radius: 11px; background: linear-gradient(#b8ccd6,#91aebb); transform: perspective(400px) rotateX(35deg); box-shadow: 0 13px 18px -9px #6853693d; }
+.event-details-alternative { display: inline-flex; align-items: center; gap: 5px; border: 0; min-height: 44px; padding: 10px 4px; margin: 16px auto 0; background: none; color: var(--ink-soft); font-size: 12px; font-weight: 700; text-decoration: underline; text-underline-offset: 5px; cursor: pointer; }
+.event-details-alternative svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.4; }
+.event-location { max-width: 420px; margin: 29px auto 0; }
+.event-pin { display: block; width: 54px; min-height: 62px; margin: 0 auto; padding: 4px; border: 0; border-radius: 15px; background: none; cursor: pointer; }
+.event-pin svg { display: block; width: 100%; fill: color-mix(in srgb,var(--pink) 70%,#fffaf3); stroke: var(--accent-pink); stroke-width: 1.2; filter: drop-shadow(0 4px 4px #7c5b7026); }
+.event-pin ellipse { fill: #807a9026; stroke: none; }
+.event-pin circle { fill: #fffaf3; }
+.event-pin:disabled { opacity: .65; cursor: default; }
+.event-location-name { margin: 10px 0 0; font-size: 14px; font-weight: 700; }
+.event-location-address { margin: 11px auto 0; max-width: 340px; font-size: 13px; line-height: 1.8; white-space: pre-line; overflow-wrap: anywhere; user-select: text; }
+.event-map-link { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; margin: 6px auto 0; padding: 10px 4px; font-size: 12px; font-weight: 700; text-underline-offset: 5px; }
+.event-map-link svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+.event-save { max-width: 400px; margin: 27px auto 0; }
+.event-save .discover-button { min-height: 48px; cursor: pointer; font: inherit; font-size: 12px; font-weight: 700; }
+.event-save button:disabled { opacity: .56; cursor: default; box-shadow: none; }
+.event-save p:not(.sr-only) { min-height: 18px; margin: 12px auto 0; max-width: 290px; font-size: 11px; color: var(--ink-soft); line-height: 1.6; }
+.event-dress-code { max-width: 420px; margin: 38px auto 0; padding: 27px 25px; border: 1px solid #fffefa9c; border-radius: 18px; background: #fffaf375; }
+.event-dress-swatches { display: flex; justify-content: center; margin: 0 0 15px; }
+.event-dress-swatches span { width: 19px; height: 19px; border-radius: 50%; background: var(--pink); border: 2px solid #fffaf3; }
+.event-dress-swatches span:last-child { margin-left: -5px; background: var(--blue); }
+.event-dress-code h3 { margin: 0 0 13px; font-family: var(--serif); font-size: 26px; font-weight: 400; }
+.event-dress-code p { margin: 0; font-size: 14px; line-height: 1.85; overflow-wrap: anywhere; }
+.event-continuation { max-width: 400px; margin: 48px auto 0; }
+.event-fine-line { display: block; width: 50px; height: 1px; margin: 0 auto 28px; background: linear-gradient(90deg,var(--pink),var(--blue)); }
+.event-continuation p { margin: 0 auto 22px; font-family: var(--serif); font-size: 27px; font-weight: 400; line-height: 1.25; }
+.event-continuation .discover-button { min-height: 48px; }
+@keyframes number-leaf { 0% { transform: rotateX(-32deg); opacity: .4; } 100% { transform: rotateX(0); opacity: 1; } }
+@keyframes calendar-paper-lift { 0%,100% { transform: none; } 45% { transform: rotateX(-16deg) translateY(-5px); box-shadow: 0 16px 20px -15px #6d526877; } }
+@media (max-width:480px) {
+  .event-section { padding: 55px 22px 58px; }
+  .event-heading h2 { font-size: 31px; }
+  .event-countdown { gap: 9px; margin-bottom: 42px; }
+  .countdown-tile { padding: 11px 3px 10px; }
+  .calendar-month { font-size: 20px; }
+  .calendar-date { padding: 15px 12px 19px; }
+  .calendar-day { font-size: 85px; min-height: 94px; }
+  .event-details-card { padding: 25px 22px; }
+}
+@media (max-width:359px) {
+  .event-section { padding-left: 18px; padding-right: 18px; }
+  .event-heading h2 { font-size: 28px; }
+  .event-countdown { gap: 7px; }
+  .countdown-label { font-size: 9px; }
+  .event-details-card { padding: 24px 18px; }
+  .event-details h3 { font-size: 23px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .countdown-number.is-flipping, .desk-calendar.is-opening .calendar-front { animation: none; }
+  .event-details, .calendar-tab svg { transition: none; }
+}
+
+/* Pulido visual: insignia como en el mensaje de los papás, tarjeta de ubicación y "Cómo llegar" destacado. */
+.event-keepsake { display: grid; place-items: center; width: 64px; height: 64px; margin-bottom: 22px; border-radius: 50%; background: #ffffffd0; box-shadow: 0 10px 24px -14px #6a4f6a73, inset 0 0 0 1px #fff; }
+.event-keepsake svg { width: 32px; stroke-width: 1.6; }
+.event-countdown-message { font-size: 15px; font-weight: 700; color: var(--accent-pink); }
+.countdown-tile { border-radius: 16px; }
+.countdown-label { margin-top: 2px; font-size: 11px; font-weight: 700; }
+.calendar-weekday { font-size: 16px; }
+.calendar-readable-date { font-size: 13px; font-weight: 600; }
+.event-information dd { font-size: 15px; font-weight: 600; }
+.event-host-note { font-size: 14px; color: var(--ink-soft); }
+.event-details-alternative { font-size: 13px; }
+.event-location { position: relative; max-width: 420px; margin-top: 34px; padding: 30px 24px 26px; border-radius: 26px; background: #ffffffad; box-shadow: 0 18px 40px -26px #5a456080, inset 0 0 0 1px #ffffffcc; }
+.event-pin { width: 58px; min-height: 66px; }
+.event-pin:hover svg { transform: translateY(-3px); }
+.event-pin svg { transition: transform .2s; }
+.event-location-name { margin-top: 12px; font-family: var(--serif); font-size: 22px; font-weight: 500; line-height: 1.25; }
+.event-location-address { font-size: 14px; color: var(--ink-soft); }
+.event-map-link { gap: 10px; min-height: 48px; margin-top: 18px; padding: 12px 24px; border-radius: 999px; background: var(--accent-pink); color: #fff; font-size: 13px; text-decoration: none; box-shadow: 0 10px 22px -12px #a8456ecc; transition: transform .15s, box-shadow .15s, background .2s; }
+.event-map-link:hover { background: #953b61; transform: translateY(-1px); box-shadow: 0 14px 26px -12px #a8456ecc; }
+.event-map-link:focus-visible { outline: 2px solid var(--ink-strong); outline-offset: 4px; }
+.event-save { margin-top: 30px; }
+.event-save .discover-button { font-size: 13px; }
+.event-save p:not(.sr-only) { font-size: 12px; font-weight: 600; }
+.event-dress-code { margin-top: 40px; padding: 30px 26px; border-radius: 26px; background: #ffffff8c; box-shadow: 0 18px 40px -28px #5a456066; }
+.event-dress-swatches span { width: 24px; height: 24px; }
+.event-dress-code p { font-size: 15px; }
+.event-fine-line { width: 70px; height: 2px; border-radius: 2px; }
+@media (max-width: 480px) {
+  .event-section { padding-left: 16px; padding-right: 16px; }
+  .event-keepsake { width: 56px; height: 56px; }
+  .event-keepsake svg { width: 28px; }
+  .event-location { padding: 26px 18px 22px; border-radius: 22px; }
+  .event-location-name { font-size: 20px; }
+  .event-dress-code { padding: 26px 20px; border-radius: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .event-map-link, .event-pin svg { transition: none; }
+}

@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F7F4ED">
+  <meta name="description" content="Un pequeño secreto, una gran emoción. Abre tu invitación a nuestra revelación de bebé.">
+  <title>¿Niña o niño? · Una invitación especial</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fondo-rosa-azul.jpg" as="image">
+  <link rel="preload" href="assets/fredoka-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="television.css">
+  <link rel="stylesheet" href="parents.css">
+  <link rel="stylesheet" href="event.css">
+  <link rel="stylesheet" href="team.css">
+  <link rel="stylesheet" href="capsule.css">
+  <link rel="stylesheet" href="attendance.css">
+  <script src="config.js"></script>
+  <script>
+    // Restaurar antes del primer dibujo para evitar que el regalo parpadee al recargar.
+    try {
+      const storagePrefix = window.INVITATION_CONFIG?.storageNamespace;
+      if (sessionStorage.getItem(`${storagePrefix ? storagePrefix + ':' : ''}baby-invitation-opened`) === 'yes') {
+        document.documentElement.dataset.restored = 'true';
+      }
+    } catch (_) { /* La invitación también funciona sin almacenamiento. */ }
+  </script>
+  <script src="app.js" defer></script>
+  <script src="television.js" defer></script>
+  <script src="parents.js" defer></script>
+  <script src="event-core.js" defer></script>
+  <script src="event.js" defer></script>
+  <script src="team-core.js" defer></script>
+  <script src="team.js" defer></script>
+  <script src="capsule-core.js" defer></script>
+  <script src="capsule.js" defer></script>
+  <script src="attendance-core.js" defer></script>
+  <script src="pass.js" defer></script>
+  <script src="attendance.js" defer></script>
+</head>
+<body>
+  <main class="invitation" id="invitation" data-stage="closed">
+    <div class="ambient ambient--pink" aria-hidden="true"></div>
+    <div class="ambient ambient--blue" aria-hidden="true"></div>
+    <div class="paper-grain" aria-hidden="true"></div>
+
+    <section class="entrance" id="entrance" aria-labelledby="entrance-title">
+      <div class="entrance-header">
+        <div class="little-star" aria-hidden="true">
+          <svg viewBox="0 0 40 40"><path d="M20 3c0 12-5 17-17 17 12 0 17 5 17 17 0-12 5-17 17-17C25 20 20 15 20 3Z"/></svg>
+        </div>
+        <p class="eyebrow">Una sorpresa llena de amor</p>
+        <h1 id="entrance-title">Tenemos un<br>pequeño <em>secreto…</em></h1>
+        <span class="fine-line" aria-hidden="true"></span>
+      </div>
+
+      <div class="gift-scene">
+        <div class="floating-particles" aria-hidden="true">
+          <i class="ambient-dot ambient-dot--1"></i><i class="ambient-dot ambient-dot--2"></i>
+          <i class="ambient-dot ambient-dot--3"></i><i class="ambient-dot ambient-dot--4"></i>
+          <svg class="ambient-star ambient-star--1" viewBox="0 0 24 24"><path d="M12 0c0 9-3 12-12 12 9 0 12 3 12 12 0-9 3-12 12-12-9 0-12-3-12-12Z"/></svg>
+          <svg class="ambient-star ambient-star--2" viewBox="0 0 24 24"><path d="M12 0c0 9-3 12-12 12 9 0 12 3 12 12 0-9 3-12 12-12-9 0-12-3-12-12Z"/></svg>
+        </div>
+        <div class="gift-shadow" aria-hidden="true"></div>
+        <div class="gift-float">
+          <div class="gift-art" aria-hidden="true">
+            <div class="gift-glow"></div>
+            <svg class="gift-box" viewBox="0 0 360 340" fill="none">
+              <defs>
+                <linearGradient id="paper-front" x1="64" y1="160" x2="253" y2="302" gradientUnits="userSpaceOnUse"><stop stop-color="#fffaf0"/><stop offset=".55" stop-color="#f2e4ce"/><stop offset="1" stop-color="#e7d4b9"/></linearGradient>
+                <linearGradient id="paper-side" x1="250" y1="181" x2="306" y2="279" gradientUnits="userSpaceOnUse"><stop stop-color="#daceb9"/><stop offset="1" stop-color="#c4b294"/></linearGradient>
+                <linearGradient id="lid-front" x1="59" y1="142" x2="255" y2="175" gradientUnits="userSpaceOnUse"><stop stop-color="#fffaf1"/><stop offset="1" stop-color="#e8d8bf"/></linearGradient>
+                <linearGradient id="ribbon-pink" x1="120" y1="154" x2="171" y2="294" gradientUnits="userSpaceOnUse"><stop stop-color="#db9ca8"/><stop offset=".35" stop-color="#f2c7ce"/><stop offset=".7" stop-color="#e2a5b2"/><stop offset="1" stop-color="#bd7d8d"/></linearGradient>
+                <linearGradient id="ribbon-blue" x1="267" y1="143" x2="290" y2="285" gradientUnits="userSpaceOnUse"><stop stop-color="#c3dce4"/><stop offset=".5" stop-color="#92bccb"/><stop offset="1" stop-color="#6c9caa"/></linearGradient>
+                <pattern id="paper-speckles" width="22" height="19" patternUnits="userSpaceOnUse"><circle cx="3" cy="5" r=".6" fill="#a88b68" opacity=".18"/><circle cx="15" cy="14" r=".5" fill="#fff" opacity=".65"/></pattern>
+                <filter id="box-shadow" x="-30%" y="-30%" width="170%" height="180%"><feDropShadow dx="1" dy="6" stdDeviation="5" flood-color="#79634b" flood-opacity=".12"/></filter>
+              </defs>
+              <g class="gift-body" filter="url(#box-shadow)">
+                <path d="m65 155 184 22 57-36-185-24Z" fill="#bda98d"/>
+                <path d="m77 156 172 17 43-28-171-19Z" fill="#8d7960"/>
+                <path d="m65 155 184 22v125L65 280Z" fill="url(#paper-front)"/>
+                <path d="m249 177 57-36v124l-57 37Z" fill="url(#paper-side)"/>
+                <path d="m65 155 184 22v125L65 280Z" fill="url(#paper-speckles)"/>
+                <path d="m249 178 57-36v124l-57 36Z" fill="url(#paper-speckles)"/>
+                <path d="m67 157 180 22v120" stroke="#fffaf0" stroke-opacity=".6"/>
+                <path d="m67 278 180 21" stroke="#ad9472" stroke-opacity=".25"/>
+                <g class="ribbon-front"><path d="m134 163 35 4v125l-35-4Z" fill="url(#ribbon-pink)"/><path d="m137 165 2 123m27-121v125" stroke="#fbe1e5" stroke-opacity=".55"/></g>
+                <g class="ribbon-side"><path d="m269 164 19-12v124l-19 13Z" fill="url(#ribbon-blue)"/><path d="m272 164 1 122" stroke="#deedf1" stroke-opacity=".55"/></g>
+                <g class="gift-tag" transform="rotate(8 207 213)">
+                  <path d="M202 169q-11 17 4 32" stroke="#9e8268" stroke-width="1"/>
+                  <path d="m187 198 18-10 18 10v37h-36Z" fill="#fcf6e9" stroke="#d6c2a7" stroke-width=".7"/>
+                  <circle cx="205" cy="198" r="2.4" fill="#c7b292"/>
+                  <text x="205" y="217" text-anchor="middle" fill="#887159" font-family="Nunito, Segoe UI, sans-serif" font-size="8" font-weight="600">para</text>
+                  <text x="205" y="228" text-anchor="middle" fill="#887159" font-family="Fredoka, Nunito, sans-serif" font-size="11" font-weight="500">ti</text>
+                </g>
+              </g>
+              <g class="gift-lid" filter="url(#box-shadow)">
+                <path d="m54 139 58-38 207 25-61 39Z" fill="#f8eddc"/>
+                <path d="m54 139 204 26v19L54 159Z" fill="url(#lid-front)"/>
+                <path d="m258 165 61-39v19l-61 39Z" fill="#c9b899"/>
+                <path d="m54 139 204 26 61-39" stroke="#fffcf5" stroke-width="1.2"/>
+                <path d="m54 158 204 25 60-38" stroke="#ad9472" stroke-opacity=".24"/>
+                <path d="m54 139 58-38 207 25-61 39Z" fill="url(#paper-speckles)"/>
+                <g class="ribbon-lid"><path d="m129 149 58-39 38 5-59 39v18l-37-5Z" fill="#eab8c1"/><path d="m134 149 58-37" stroke="#fbe1e5" stroke-width="2" opacity=".7"/><path d="m142 105 64 7 90 28-23 15-88-37-62-7Z" fill="#a6c9d5" opacity=".92"/></g>
+              </g>
+            </svg>
+          </div>
+          <button class="bow-button" id="open-gift" type="button" aria-label="Desatar el moño y abrir la invitación" aria-describedby="opening-hint">
+            <svg class="gift-bow" viewBox="0 0 200 160" fill="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="bow-pink" x1="24" y1="25" x2="104" y2="100" gradientUnits="userSpaceOnUse"><stop stop-color="#f5d2d8"/><stop offset=".35" stop-color="#e9b4c1"/><stop offset=".65" stop-color="#cd8a9d"/><stop offset="1" stop-color="#f3c8d1"/></linearGradient>
+                <linearGradient id="bow-blue" x1="173" y1="23" x2="105" y2="103" gradientUnits="userSpaceOnUse"><stop stop-color="#d0e4ea"/><stop offset=".35" stop-color="#accbd8"/><stop offset=".7" stop-color="#7ca5b8"/><stop offset="1" stop-color="#c3dce4"/></linearGradient>
+                <linearGradient id="bow-knot" x1="87" y1="67" x2="114" y2="96" gradientUnits="userSpaceOnUse"><stop stop-color="#f3d4d9"/><stop offset=".5" stop-color="#c995a8"/><stop offset="1" stop-color="#a2bdce"/></linearGradient>
+                <filter id="bow-shadow" x="-40%" y="-40%" width="180%" height="200%"><feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#795b59" flood-opacity=".19"/></filter>
+              </defs>
+              <g filter="url(#bow-shadow)">
+                <g class="bow-tail bow-tail--pink"><path d="M96 78c-17 14-27 37-41 60l18-4 9 15c8-26 12-44 25-64Z" fill="url(#bow-pink)"/><path d="M97 85c-12 15-19 30-27 46" stroke="#ffe7eb" stroke-opacity=".5" stroke-width="2"/></g>
+                <g class="bow-tail bow-tail--blue"><path d="M103 81c19 10 38 22 51 46l-19-3-7 15c-7-25-19-40-33-51Z" fill="url(#bow-blue)"/><path d="M107 88c15 13 26 20 31 32" stroke="#e4f1f5" stroke-opacity=".55" stroke-width="2"/></g>
+                <g class="bow-loop bow-loop--pink"><path d="M101 78C84 52 50 15 28 30 4 47 38 90 90 88Z" fill="url(#bow-pink)"/><path d="M88 77C68 57 45 32 30 39c-8 14 22 37 58 38Z" fill="#c890a0"/><path d="M86 76C64 63 43 45 30 40" stroke="#a9657c" stroke-width="1.5" opacity=".4"/><path d="M99 76C80 48 52 20 32 31" stroke="#f9e0e5" stroke-width="2" opacity=".85"/></g>
+                <g class="bow-loop bow-loop--blue"><path d="M101 78c18-28 46-64 70-53 30 14 6 54-61 65Z" fill="url(#bow-blue)"/><path d="M113 78c18-17 44-46 58-43 12 13-19 37-58 43Z" fill="#7ba5b8"/><path d="M116 76c22-11 42-30 55-41" stroke="#58899f" stroke-width="1.5" opacity=".4"/><path d="M105 76c19-28 46-56 66-49" stroke="#e6f2f5" stroke-width="2" opacity=".8"/></g>
+                <g class="bow-knot"><path d="M89 68q13-7 25 2l-3 25q-15 5-25-5Z" fill="url(#bow-knot)"/><path d="m94 70-3 19m17-16-2 18" stroke="#fff0f0" stroke-opacity=".55"/></g>
+              </g>
+            </svg>
+          </button>
+        </div>
+        <div class="opening-particles" id="opening-particles" aria-hidden="true"></div>
+      </div>
+
+      <div class="entrance-footer">
+        <p class="opening-hint" id="opening-hint">Toca el moño para descubrir tu invitación</p>
+        <p class="small-note">Lo más bonito está por venir</p>
+        <a class="skip-link" id="skip-intro" href="#cover">Ver invitación <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="cover" id="cover" aria-labelledby="cover-title">
+      <div class="cover-inner">
+        <p class="eyebrow cover-reveal cover-eyebrow">Nuestra dulce espera</p>
+        <div class="cover-heading">
+          <h2 class="cover-reveal" id="cover-title" tabindex="-1">¿Niña <em>o</em> niño?</h2>
+          <p class="cover-subtitle cover-reveal">Un pequeño secreto, una gran emoción</p>
+        </div>
+        <div class="photo-scene" id="photo-scene">
+          <img class="cover-photo" id="cover-photo" src="assets/girl-pink-boy-blue.jpg" width="2000" height="1335" alt="Una mitad rosa con zapatitos, chupón y letras GIRL, y una mitad azul con tenis, chupón y letras BOY." fetchpriority="high" decoding="async">
+          <div class="photo-edge" aria-hidden="true"></div>
+          <button type="button" class="color-half color-half--pink" data-color="pink" aria-label="Iluminar la mitad rosa"><span class="half-glow" aria-hidden="true"></span></button>
+          <button type="button" class="color-half color-half--blue" data-color="blue" aria-label="Iluminar la mitad azul"><span class="half-glow" aria-hidden="true"></span></button>
+          <div class="photo-particles" id="photo-particles" aria-hidden="true"></div>
+        </div>
+        <div class="cover-details">
+          <div class="parents cover-reveal" aria-label="Nombres de los papás">
+            <span data-parent="mom">[Nombre de mamá]</span>
+            <span class="ampersand" aria-hidden="true">&amp;</span>
+            <span data-parent="dad">[Nombre de papá]</span>
+          </div>
+          <div class="tiny-divider cover-reveal" aria-hidden="true"><span></span><svg viewBox="0 0 20 20"><path d="M10 17S2 12 2 6.5a4 4 0 0 1 8-1 4 4 0 0 1 8 1C18 12 10 17 10 17Z"/></svg><span></span></div>
+          <p class="cover-whisper cover-reveal">Dos posibilidades. El mismo amor infinito.</p>
+          <a class="discover-button cover-reveal" id="discover-more" href="#television-section">Descubrir más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="tv-section" id="television-section" aria-labelledby="tv-title" tabindex="-1">
+      <div class="tv-section-inner">
+        <header class="tv-heading">
+          <p class="eyebrow">Unos invitados muy curiosos</p>
+          <h2 id="tv-title">Ellos también<br>quieren saber…</h2>
+          <p class="tv-question">¿Niña <span>o</span> niño?</p>
+        </header>
+
+        <div class="tv-set" id="tv-set" data-power="off">
+          <div class="tv-antenna" aria-hidden="true"><span></span><span></span><i></i></div>
+          <div class="tv-cabinet">
+            <div class="tv-bezel">
+              <div class="tv-screen" id="tv-screen" style="--video-ratio: 624 / 352">
+                <video id="invitation-video" preload="metadata" playsinline aria-label="Video de personajes que también quieren saber si será niña o niño"></video>
+                <div class="tv-screen-reflection" aria-hidden="true"></div>
+                <div class="tv-off-screen" id="tv-off-screen">
+                  <svg class="tv-off-symbol" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 8v16M14 13a16 16 0 1 0 20 0"/></svg>
+                  <p>Toca el botón<br>para encender</p>
+                  <span>La curiosidad también se contagia</span>
+                </div>
+                <div class="tv-interference" id="tv-interference" hidden aria-hidden="true"><span></span></div>
+                <div class="tv-play-overlay" id="tv-play-overlay" hidden>
+                  <button type="button" class="tv-screen-play" id="tv-screen-play" aria-label="Reproducir el video">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 11 7-11 7Z"/></svg>
+                    <span>Reproducir</span>
+                  </button>
+                </div>
+                <div class="tv-error" id="tv-error" hidden role="alert">
+                  <p>No pudimos cargar el video.</p>
+                  <button type="button" id="tv-retry">Reintentar</button>
+                </div>
+                <button type="button" class="tv-close-expanded" id="tv-close-expanded" aria-label="Cerrar vista ampliada" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+              </div>
+            </div>
+            <div class="tv-panel">
+              <div class="tv-brand" aria-hidden="true">dulce espera<span>Momentos que nos unen</span></div>
+              <button type="button" class="tv-power-button" id="tv-power" aria-label="Encender televisión" aria-pressed="false" aria-controls="invitation-video" aria-describedby="tv-power-state">
+                <span class="tv-power-face"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v9M6.5 5.8a8 8 0 1 0 11 0"/></svg></span>
+                <span id="tv-power-label">Encender</span>
+              </button>
+              <div class="tv-remote" role="group" aria-label="Controles del video">
+                <button type="button" id="tv-play-pause" class="tv-remote-button" aria-label="Reproducir video" disabled>
+                  <svg class="tv-icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 11 7-11 7Z"/></svg>
+                  <svg class="tv-icon-pause" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M8 5v14M16 5v14"/></svg>
+                  <span>Reproducir</span>
+                </button>
+                <button type="button" id="tv-sound" class="tv-remote-button" aria-label="Silenciar sonido" aria-pressed="false">
+                  <svg class="tv-icon-sound" viewBox="0 0 24 24" aria-hidden="true"><path d="m11 5-5 4H3v6h3l5 4ZM15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg>
+                  <svg class="tv-icon-muted" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="m11 5-5 4H3v6h3l5 4Zm5 4 5 6m0-6-5 6"/></svg>
+                  <span>Silenciar</span>
+                </button>
+                <button type="button" id="tv-restart" class="tv-remote-button" aria-label="Volver a ver desde el inicio" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10a8 8 0 1 1 1 8M4 4v6h6"/></svg><span>Volver a ver</span></button>
+                <button type="button" id="tv-expand" class="tv-remote-button" aria-label="Ampliar video" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H4v5m11-5h5v5M4 15v5h5m6 0h5v-5"/></svg><span>Ampliar</span></button>
+              </div>
+              <div class="tv-speaker" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+            <div class="tv-indicator-row"><span class="tv-indicator" aria-hidden="true"></span><span id="tv-power-state">Apagada</span><span class="tv-frequency" aria-hidden="true">PINK / BLUE</span></div>
+          </div>
+          <div class="tv-feet" aria-hidden="true"><span></span><span></span></div>
+          <div class="tv-floor-shadow" aria-hidden="true"></div>
+        </div>
+
+        <p class="tv-status" id="tv-status" role="status" aria-live="polite">Enciéndela cuando quieras. Puedes seguir descubriendo.</p>
+
+        <div class="tv-ending" id="tv-ending" hidden>
+          <span class="tv-ending-line" aria-hidden="true"></span>
+          <p>Ahora queremos conocer tu corazonada</p>
+          <a class="discover-button tv-team-button" id="tv-team" href="#vote-section">¿Cuál es tu equipo? <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a>
+        </div>
+        <a class="tv-continue" id="tv-continue" href="#parents-message">Seguir descubriendo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></a>
+      </div>
+    </section>
+    <section class="parents-section" id="parents-message" aria-labelledby="parents-title" tabindex="-1">
+      <div class="parents-story">
+        <div class="parents-keepsake" aria-hidden="true"><svg viewBox="0 0 58 40"><path d="M21 33S5 23 5 12a8 8 0 0 1 16-2 8 8 0 0 1 16 2c0 11-16 21-16 21Z"/><path d="M37 33S21 23 21 12a8 8 0 0 1 16-2 8 8 0 0 1 16 2c0 11-16 21-16 21Z"/></svg></div>
+        <h2 class="parents-reveal parents-title" id="parents-title">Nuestro amor tiene una nueva sorpresa</h2>
+        <p class="parents-reveal parents-copy" id="parents-copy">Una personita muy especial está por llegar a nuestras vidas. Todavía guardamos un pequeño secreto, y queremos compartir contigo la emoción de descubrirlo. ¡Acompáñanos en este momento que recordaremos siempre!</p>
+        <p class="parents-reveal parents-signature" id="parents-signature">Con amor, [Nombre de mamá] y [Nombre de papá].</p>
+      </div>
+
+      <figure class="family-photo" id="interactive-photo" aria-labelledby="cloud-hint">
+        <div class="family-photo-frame" id="family-photo-frame" data-revealed="false">
+          <button class="family-photo-opener" id="family-photo-opener" type="button" aria-label="Ampliar espacio reservado para nuestra fotografía" aria-haspopup="dialog" aria-controls="family-photo-dialog" disabled>
+            <img class="family-photo-image" id="family-photo-image" alt="Fotografía de los futuros papás o del ultrasonido" loading="lazy" decoding="async" draggable="false" hidden>
+            <span class="family-photo-placeholder" id="family-photo-placeholder">
+              <svg viewBox="0 0 80 70" aria-hidden="true"><path d="M11 19h15l6-8h17l6 8h14v39H11Z"/><circle cx="40" cy="38" r="13"/><path d="M38 31c-8-6-13 7 2 14 15-7 10-20 2-14l-2 2Z"/><path d="M61 26h2"/></svg>
+              <span class="photo-placeholder-title">Nuestro primer recuerdo</span>
+              <span class="photo-placeholder-note">Espacio reservado para nuestra fotografía</span>
+            </span>
+            <span class="photo-zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6M10 7v6m-3-3h6"/></svg></span>
+          </button>
+
+          <svg class="cloud-definitions" width="0" height="0" aria-hidden="true"><defs>
+            <linearGradient id="parents-cloud-pink" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#fffdfb"/><stop offset=".55" stop-color="#f9f3f5"/><stop offset="1" stop-color="#e3ccd9"/></linearGradient>
+            <linearGradient id="parents-cloud-blue" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#fcfeff"/><stop offset=".55" stop-color="#f2f7f9"/><stop offset="1" stop-color="#cbdee8"/></linearGradient>
+            <symbol id="parents-cloud-shape" viewBox="0 0 240 140"><path d="M42 124C19 124 4 108 4 87c0-18 12-32 30-36C34 26 54 10 78 10c16 0 29 6 38 19 7-6 16-9 26-9 25 0 45 18 48 42 23-5 46 12 46 36 0 15-14 26-32 26Z" stroke="#fff" stroke-opacity=".65" stroke-width="1"/></symbol>
+          </defs></svg>
+
+          <div class="cloud-layer" id="cloud-layer">
+            <div class="cloud-mist" aria-hidden="true"></div>
+            <button class="photo-cloud photo-cloud--1" type="button" data-cloud="1" aria-label="Apartar nube 1 de 8" aria-describedby="cloud-hint"><svg viewBox="0 0 240 140" aria-hidden="true"><use href="#parents-cloud-shape" fill="url(#parents-cloud-pink)"/></svg></button>
+            <button class="photo-cloud photo-cloud--2" type="button" data-cloud="2" aria-label="Apartar nube 2 de 8" aria-describedby="cloud-hint"><svg viewBox="0 0 240 140" aria-hidden="true"><use href="#parents-cloud-shape" fill="url(#parents-cloud-blue)"/></svg></button>
+            <button class="photo-cloud photo-cloud--3" type="button" data-cloud="3" aria-label="Apartar nube 3 de 8" aria-describedby="cloud-hint"><svg viewBox="0 0 240 140" aria-hidden="true"><use href="#parents-cloud-shape" fill="url(#parents-cloud-blue)"/></svg></button>
+            <button class="photo-cloud photo-cloud--4" type="button" data-cloud="4" aria-label="Apartar nube 4 de 8" aria-describedby="cloud-hint"><svg viewBox="0 0 240 140" aria-hidden="true"><use href="#parents-cloud-shape" fill="url(#parents-cloud-pink)"/></svg></button>
+            <button class="photo-cloud photo-cloud--5" type="button" data-cloud="5" aria-label="Apartar nube 5 de 8" aria-describedby="cloud-hint"><svg viewBox="0 0 240 140" aria-hidden="true"><use href="#parents-cloud-shape" fill="url(#parents-cloud-pink)"/></svg></button>
+            <button class="photo-cloud photo-cloud--6" type="button" data-cloud="6" aria-label="Apartar nube 6 de 8" aria-describedby="cloud-hint"><svg viewBox="0 0 240 140" aria-hidden="true"><use href="#parents-cloud-shape" fill="url(#parents-cloud-blue)"/></svg></button>
+            <button class="photo-cloud photo-cloud--7" type="button" data-cloud="7" aria-label="Apartar nube 7 de 8" aria-describedby="cloud-hint"><svg viewBox="0 0 240 140" aria-hidden="true"><use href="#parents-cloud-shape" fill="url(#parents-cloud-blue)"/></svg></button>
+            <button class="photo-cloud photo-cloud--8" type="button" data-cloud="8" aria-label="Apartar nube 8 de 8" aria-describedby="cloud-hint"><svg viewBox="0 0 240 140" aria-hidden="true"><use href="#parents-cloud-shape" fill="url(#parents-cloud-pink)"/></svg></button>
+          </div>
+        </div>
+        <figcaption class="cloud-hint" id="cloud-hint">Aparta las nubes y descubre quién está detrás</figcaption>
+      </figure>
+      <div class="parents-photo-actions">
+        <button class="view-family-photo" id="view-family-photo" type="button">Ver fotografía <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+        <a class="parents-continue" id="parents-continue" href="#event-section">Seguir descubriendo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></a>
+      </div>
+      <div class="family-photo-outcome" id="family-photo-outcome" hidden>
+        <p>La aventura más bonita apenas comienza</p>
+        <a class="discover-button" id="parents-event" href="#event-section">¿Cuándo nos vemos? <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a>
+      </div>
+      <p class="sr-only" id="family-photo-status" role="status" aria-live="polite"></p>
+    </section>
+    <section class="event-section" id="event-section" aria-labelledby="event-title" tabindex="-1">
+      <header class="event-heading">
+        <div class="event-keepsake" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M11 11h26v28H11Z"/><path d="M11 19h26M18 7v8m12-8v8"/><path d="m19 29 4 4 7-8"/></svg></div>
+        <h2 id="event-title">Cada vez falta menos<br>para descubrirlo</h2>
+        <p class="event-countdown-message" id="event-countdown-message" role="status" aria-live="polite">Pronto tendremos fecha</p>
+      </header>
+
+      <div class="event-countdown" role="timer" aria-live="off" aria-label="Tiempo que falta para el evento">
+        <div class="countdown-tile"><span class="countdown-number" data-countdown="days">--</span><span class="countdown-label">Días</span></div>
+        <div class="countdown-tile"><span class="countdown-number" data-countdown="hours">--</span><span class="countdown-label">Horas</span></div>
+        <div class="countdown-tile"><span class="countdown-number" data-countdown="minutes">--</span><span class="countdown-label">Minutos</span></div>
+        <div class="countdown-tile"><span class="countdown-number" data-countdown="seconds">--</span><span class="countdown-label">Segundos</span></div>
+      </div>
+
+      <div class="desk-calendar" id="desk-calendar" data-open="false">
+        <div class="calendar-rings" aria-hidden="true"><span></span><span></span></div>
+        <div class="calendar-paper" aria-hidden="true"></div>
+        <div class="calendar-front">
+          <p class="calendar-month" id="event-month">Nuestra cita</p>
+          <div class="calendar-date">
+            <span class="calendar-day" id="event-day">--</span>
+            <span class="calendar-weekday" id="event-weekday">Fecha por confirmar</span>
+            <time class="calendar-readable-date" id="event-readable-date">Pronto tendremos fecha</time>
+          </div>
+          <div class="calendar-lifting-sheet" aria-hidden="true"><span></span><span></span><span></span></div>
+          <button class="calendar-tab" id="event-calendar-tab" type="button" aria-expanded="false" aria-controls="event-details"><span id="event-tab-label">Abre los detalles</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        </div>
+        <div class="event-details" id="event-details" role="region" aria-labelledby="event-details-title" hidden>
+          <div class="event-details-clip"><div class="event-details-card">
+          <h3 id="event-details-title">Nuestra cita con la sorpresa</h3>
+          <dl class="event-information">
+            <div><dt>Fecha</dt><dd id="event-full-date">Fecha por confirmar</dd></div>
+            <div><dt>Hora de inicio</dt><dd id="event-time">Hora por confirmar</dd></div>
+            <div><dt>Lugar</dt><dd id="event-venue">Ubicación por confirmar</dd></div>
+            <div><dt>Dirección</dt><dd id="event-details-address">Dirección por confirmar</dd></div>
+          </dl>
+          <p class="event-host-note" id="event-host-note" hidden></p>
+          </div></div>
+        </div>
+        <div class="calendar-base" aria-hidden="true"></div>
+      </div>
+      <button class="event-details-alternative" id="event-details-button" type="button" aria-expanded="false" aria-controls="event-details">Ver detalles <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+
+      <div class="event-location">
+        <button class="event-pin" id="event-pin" type="button" aria-label="Consultar dirección" aria-expanded="false" aria-controls="event-location-address"><svg viewBox="0 0 48 56" aria-hidden="true"><ellipse cx="24" cy="50" rx="12" ry="3"/><path d="M24 47S8 32 8 20a16 16 0 0 1 32 0c0 12-16 27-16 27Z"/><circle cx="24" cy="20" r="6"/></svg></button>
+        <p class="event-location-name" id="event-location-name">Ubicación por confirmar</p>
+        <p class="event-location-address" id="event-location-address" hidden>Dirección por confirmar</p>
+        <a class="event-map-link" id="event-map-link" target="_blank" rel="noopener noreferrer" hidden>Cómo llegar <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5m0-5L9 15M10 5H5v14h14v-5"/></svg></a>
+      </div>
+      <div class="event-save">
+        <button class="discover-button" id="event-save-date" type="button" disabled aria-describedby="event-save-hint"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14v15H5ZM8 3v4m8-4v4M5 10h14m-7 3v4m-2-2h4"/></svg>Guardar la fecha</button>
+        <p id="event-save-hint">Disponible cuando confirmemos los datos del evento.</p>
+        <p class="sr-only" id="event-download-status" role="status" aria-live="polite"></p>
+      </div>
+      <aside class="event-dress-code" id="event-dress-code" aria-labelledby="event-dress-title" hidden>
+        <div class="event-dress-swatches" aria-hidden="true"><span></span><span></span></div>
+        <h3 id="event-dress-title">Ven con tu corazonada</h3>
+        <p id="event-dress-text">Si crees que será niña, trae un detalle rosa. Si crees que será niño, uno azul. ¡También puedes venir con ambos!</p>
+      </aside>
+      <div class="event-continuation">
+        <span class="event-fine-line" aria-hidden="true"></span>
+        <p>Ya sabes cuándo…<br>ahora elige tu equipo</p>
+        <a class="discover-button" id="event-prediction" href="#vote-section">Hacer mi predicción <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a>
+      </div>
+    </section>
+    <section class="team-section" id="vote-section" aria-labelledby="team-title" tabindex="-1" data-phase="choosing">
+      <header class="team-heading">
+        <div class="team-keepsake" aria-hidden="true"><svg viewBox="0 0 48 36"><path d="M24 31S5 22 5 11a9 9 0 0 1 19-2 9 9 0 0 1 19 2c0 11-19 20-19 20Z"/><path d="m24 9 0 22"/></svg></div>
+        <h2 id="team-title">¿Qué dice tu corazonada?</h2>
+        <p id="team-instructions">Elige tu globo y colócalo en la caja</p>
+      </header>
+      <svg class="team-definitions" width="0" height="0" aria-hidden="true"><defs>
+        <radialGradient id="team-pink-balloon" cx="30%" cy="24%" r="85%"><stop stop-color="#fff0f5"/><stop offset=".32" stop-color="#efbbcc"/><stop offset=".75" stop-color="#d889a7"/><stop offset="1" stop-color="#b66889"/></radialGradient>
+        <radialGradient id="team-blue-balloon" cx="30%" cy="24%" r="85%"><stop stop-color="#effaff"/><stop offset=".32" stop-color="#b8d9e8"/><stop offset=".75" stop-color="#7fb0c8"/><stop offset="1" stop-color="#578ca9"/></radialGradient>
+        <symbol id="team-balloon-shape" viewBox="0 0 180 260">
+          <path class="team-balloon-body" d="M90 164C58 157 28 114 28 77 28 36 52 8 90 8s62 28 62 69c0 37-30 80-62 87Z"/>
+          <path d="M55 37c-12 10-17 22-16 39" stroke="#fff" stroke-width="9" stroke-linecap="round" opacity=".42" fill="none"/>
+          <path d="M64 24c6-4 12-6 20-7" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".55" fill="none"/>
+          <path d="m90 159-8 13q8-3 16 0Z" class="team-balloon-knot"/>
+          <path d="M90 171c-17 19 16 24 2 45s-18 24-6 38" stroke="#95828f" stroke-width="1.2" fill="none"/>
+        </symbol>
+      </defs></svg>
+      <div class="team-stage" id="team-stage">
+        <div class="team-balloons" id="team-balloons" role="group" aria-label="Elige tu equipo" aria-describedby="team-instructions">
+          <button class="team-balloon" id="team-girl" type="button" data-team="girl" aria-pressed="false" aria-describedby="team-tap-hint">
+            <span class="team-balloon-float"><svg class="team-balloon-art" viewBox="0 0 180 260" aria-hidden="true"><use href="#team-balloon-shape"/></svg></span>
+            <span class="team-balloon-label">Equipo niña <span class="team-selection-mark" aria-hidden="true"><svg viewBox="0 0 18 18"><path d="m4 9 3 3 7-7"/></svg></span></span>
+          </button>
+          <button class="team-balloon" id="team-boy" type="button" data-team="boy" aria-pressed="false" aria-describedby="team-tap-hint">
+            <span class="team-balloon-float"><svg class="team-balloon-art" viewBox="0 0 180 260" aria-hidden="true"><use href="#team-balloon-shape"/></svg></span>
+            <span class="team-balloon-label">Equipo niño <span class="team-selection-mark" aria-hidden="true"><svg viewBox="0 0 18 18"><path d="m4 9 3 3 7-7"/></svg></span></span>
+          </button>
+        </div>
+        <div class="team-box" id="team-box">
+          <div class="team-box-glow" aria-hidden="true"></div>
+          <svg viewBox="0 0 360 220" class="team-box-art" aria-hidden="true">
+            <defs>
+              <linearGradient id="team-paper-front" x1="0" y1="0" x2=".9" y2="1"><stop stop-color="#fffaf0"/><stop offset=".55" stop-color="#f2e4ce"/><stop offset="1" stop-color="#e7d4b9"/></linearGradient>
+              <linearGradient id="team-paper-side" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#daceb9"/><stop offset="1" stop-color="#c4b294"/></linearGradient>
+              <pattern id="team-paper-grain" width="22" height="19" patternUnits="userSpaceOnUse"><circle cx="3" cy="5" r=".6" fill="#a88b68" opacity=".18"/><circle cx="15" cy="14" r=".5" fill="#fff" opacity=".65"/></pattern>
+            </defs>
+            <ellipse cx="180" cy="203" rx="116" ry="11" fill="#6e536f" opacity=".1"/>
+            <path d="m66 68 63-39 169 24-56 39Z" fill="#bda98d"/>
+            <path d="m78 66 51-30 153 20-40 28Z" fill="#a28a6e"/>
+            <path d="m66 68-27-34 90-27v22Z" fill="#f8eddc" stroke="#fffaf0"/>
+            <path d="m129 29 22-27 174 20-27 31Z" fill="#f4e7d3"/>
+            <path d="m242 92 56-39 32 28-76 39Z" fill="#ddceb5"/>
+            <path d="m66 68 176 24v108L66 175Z" fill="url(#team-paper-front)"/>
+            <path d="m242 92 56-39v108l-56 39Z" fill="url(#team-paper-side)"/>
+            <path d="m66 68 176 24v108L66 175Zm176 24 56-39v108l-56 39Z" fill="url(#team-paper-grain)"/>
+            <path d="m126 76 32 4v108l-32-4Z" class="team-box-pink-ribbon"/>
+            <path d="m261 79 18-13v108l-18 14Z" class="team-box-blue-ribbon"/>
+            <path d="m129 78 2 105m24-102v106" stroke="#ffeef1" opacity=".6"/>
+            <path d="m264 80 1 101" stroke="#e4f1f5" opacity=".65"/>
+            <path d="m66 68 176 24 56-39" fill="none" stroke="#fffaf0" stroke-width="2"/>
+            <path d="m66 175 176 25 56-39" fill="none" stroke="#ad9472" opacity=".3"/>
+            <path d="m203 104-8 18 8 33h27l5-28-20-20Z" fill="#fcf6e9" stroke="#d6c2a7" stroke-width=".7"/>
+            <path d="M213 94q-15 10-7 21" fill="none" stroke="#9e8268"/>
+            <path d="M217 132c-10-8-16 8 0 17 16-9 10-25 0-17Z" fill="#c591a7" opacity=".7"/>
+          </svg>
+          <p class="team-box-note" id="team-box-note" aria-hidden="true"><span>Tu globo<br>va aquí</span><svg viewBox="0 0 24 34"><path d="M12 2c-6 8 6 14 0 28m-6-7 6 7 6-7"/></svg></p>
+          <div class="team-drop-zone" id="team-drop-zone"><span id="team-drop-label">Suelta tu globo aquí</span></div>
+        </div>
+        <div class="team-flight" id="team-flight" aria-hidden="true" hidden></div>
+      </div>
+      <div class="team-choice-actions" id="team-choice-actions">
+        <p class="team-tap-hint" id="team-tap-hint">También puedes tocar un globo para elegir.</p>
+        <button class="discover-button" id="team-confirm" type="button" hidden>Confirmar mi equipo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg></button>
+      </div>
+      <div class="team-result" id="team-result" hidden>
+        <h3 id="team-result-title" tabindex="-1">¡Eres del equipo niña!</h3>
+        <p class="team-result-message">Tu corazonada ya forma parte de esta aventura</p>
+        <div class="team-card" id="team-card">
+          <svg class="team-card-balloon" viewBox="0 0 180 260" aria-hidden="true"><use href="#team-balloon-shape"/></svg>
+          <div class="team-card-text"><span>Tengo una corazonada…</span><p id="team-card-name">Equipo niña</p></div>
+          <div class="team-card-actions">
+            <button class="team-change" id="team-change" type="button">Cambiar mi elección</button>
+            <a class="discover-button" id="team-continue" href="#baby-predictions">Continuar con mis predicciones <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a>
+          </div>
+        </div>
+        <p class="team-local-note" id="team-local-note">Tu elección queda guardada en este navegador.</p>
+      </div>
+      <a class="team-undecided" id="team-undecided" href="#baby-predictions">Todavía no me decido <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></a>
+      <div class="team-rain" id="team-rain" aria-hidden="true"></div>
+      <div class="team-confetti" id="team-confetti" aria-hidden="true"></div>
+      <p class="sr-only" id="team-status" role="status" aria-live="polite" aria-atomic="true"></p>
+    </section>
+    <section class="capsule-section" id="baby-predictions" aria-labelledby="capsule-title" tabindex="-1" data-mode="cards">
+      <header class="capsule-heading">
+        <div class="capsule-keepsake" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M12 13h24v27H12Z"/><path d="M17 9h14v8H17ZM18 25h12m-12 6h8"/><path d="m37 4 1.6 4.4L43 10l-4.4 1.6L37 16l-1.6-4.4L31 10l4.4-1.6Z"/></svg></div>
+        <h2 id="capsule-title">Una cápsula para el futuro</h2>
+        <p>Hoy son corazonadas… mañana serán recuerdos</p>
+      </header>
+      <div class="capsule-workbench" id="capsule-workbench">
+        <div class="capsule-paper-area" id="capsule-paper-area">
+          <form id="capsule-form" novalidate>
+            <div class="capsule-editor" id="capsule-editor">
+              <div class="capsule-progress"><span id="capsule-counter">Tarjeta 1 de 3</span><span class="capsule-progress-dots" aria-hidden="true"><i data-dot="0" class="is-current"></i><i data-dot="1"></i><i data-dot="2"></i></span></div>
+              <div class="capsule-card-stack">
+                <div class="capsule-paper-card" id="capsule-card-0" data-card="0">
+                  <fieldset class="capsule-question"><legend id="capsule-question-0" tabindex="-1">¿A quién se parecerá?</legend>
+                    <p class="capsule-card-help">Elige la corazonada que te haga sonreír.</p>
+                    <div class="capsule-options">
+                      <label><input type="radio" name="capsule-resemblance" value="mom"><span>A mamá</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-8"/></svg></label>
+                      <label><input type="radio" name="capsule-resemblance" value="dad"><span>A papá</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-8"/></svg></label>
+                      <label><input type="radio" name="capsule-resemblance" value="both"><span>Una mezcla de ambos</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-8"/></svg></label>
+                      <label><input type="radio" name="capsule-resemblance" value="own"><span>¡Tendrá su propio estilo!</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-8"/></svg></label>
+                    </div>
+                    <span class="capsule-stamp" id="capsule-stamp" hidden>Mi predicción</span>
+                  </fieldset>
+                </div>
+                <div class="capsule-paper-card" id="capsule-card-1" data-card="1" hidden>
+                  <h3 id="capsule-question-1" tabindex="-1">Un nombre que me gusta</h3>
+                  <label class="capsule-field-label" for="capsule-baby-name">Mi propuesta de nombre</label>
+                  <input class="capsule-input" id="capsule-baby-name" type="text" maxlength="100" autocomplete="off" aria-describedby="capsule-name-help capsule-characters">
+                  <p class="capsule-card-help" id="capsule-name-help">Puedes proponer uno o varios, o dejarlo como sorpresa</p>
+                  <p class="capsule-characters" id="capsule-characters">Quedan 100 caracteres</p>
+                  <div class="capsule-card-doodle" aria-hidden="true"><svg viewBox="0 0 96 85"><path d="M17 16h51v60H17Z"/><path d="m25 29 18 0m-18 10h29m-29 10h23"/><path d="m62 62 16-35 9 4-16 35-10 5Z"/><path d="m78 27 3-6 9 4-3 6"/></svg></div>
+                </div>
+                <div class="capsule-paper-card" id="capsule-card-2" data-card="2" hidden>
+                  <h3 id="capsule-question-2" tabindex="-1">¿Cuándo llegará?</h3>
+                  <label class="capsule-field-label" for="capsule-arrival">Mi fecha estimada</label>
+                  <input class="capsule-input" id="capsule-arrival" type="date" aria-describedby="capsule-arrival-range">
+                  <p class="capsule-card-help" id="capsule-arrival-range" hidden></p>
+                  <div class="capsule-date-leaf" aria-hidden="true"><span id="capsule-date-month">Una nueva aventura</span><strong id="capsule-date-day">?</strong><span id="capsule-date-caption">Tu fecha imaginada</span></div>
+                  <label class="capsule-undecided-date"><input type="checkbox" id="capsule-arrival-undecided"><span>Todavía no tengo una corazonada</span></label>
+                </div>
+              </div>
+              <nav class="capsule-navigation" aria-label="Navegar entre las tarjetas">
+                <button class="capsule-secondary" id="capsule-back" type="button" disabled>Anterior</button>
+                <button class="discover-button" id="capsule-next" type="button">Siguiente <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+                <button class="capsule-text-button" id="capsule-skip" type="button">Omitir pregunta</button>
+              </nav>
+            </div>
+            <div class="capsule-summary capsule-paper-card" id="capsule-summary" hidden>
+              <h3 id="capsule-summary-title" tabindex="-1">Tus corazonadas</h3>
+              <p class="capsule-summary-team" id="capsule-summary-team" hidden></p>
+              <dl class="capsule-answers"><div><dt>¿A quién se parecerá?</dt><dd id="capsule-answer-resemblance">Sin predicción</dd></div><div><dt>Un nombre que me gusta</dt><dd id="capsule-answer-name">Sin predicción</dd></div><div><dt>¿Cuándo llegará?</dt><dd id="capsule-answer-arrival">Sin predicción</dd></div></dl>
+              <label class="capsule-field-label" for="capsule-guest-name">Tu nombre <span>(opcional)</span></label>
+              <input class="capsule-input" id="capsule-guest-name" type="text" maxlength="80" autocomplete="name" aria-describedby="capsule-guest-help">
+              <p class="capsule-card-help" id="capsule-guest-help">Para ponerle tu firma a este recuerdo.</p>
+              <p class="capsule-empty-note" id="capsule-empty-note" hidden>Puedes completar tu cápsula más adelante. Continúa cuando quieras, sin guardarla.</p>
+              <div class="capsule-summary-actions"><button class="capsule-secondary" id="capsule-edit" type="button">Editar</button><button class="discover-button" id="capsule-save" type="button">Guardar mi cápsula <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg></button></div>
+              <p class="capsule-saved-note" id="capsule-summary-note" hidden></p>
+              <button class="capsule-text-button" id="capsule-delete" type="button" hidden>Borrar mi cápsula</button>
+              <div class="capsule-delete-confirm" id="capsule-delete-confirm" role="group" aria-label="Confirmar borrado de la cápsula" hidden><p>¿Borrar esta cápsula de este dispositivo?</p><div><button class="capsule-secondary" id="capsule-delete-cancel" type="button">Conservar mi cápsula</button><button class="capsule-text-button" id="capsule-delete-yes" type="button">Sí, borrar</button></div></div>
+            </div>
+          </form>
+        </div>
+        <div class="capsule-chest-area" id="capsule-chest-area">
+          <div class="capsule-chest" id="capsule-chest" aria-hidden="true">
+            <div class="capsule-paper-pack" id="capsule-paper-pack" hidden><i></i><i></i><i></i></div>
+            <svg viewBox="0 0 360 260" class="capsule-chest-art">
+              <defs><linearGradient id="capsule-wood" x1="0" y1="0" x2=".7" y2="1"><stop stop-color="#fff6e9"/><stop offset=".55" stop-color="#f1dfc4"/><stop offset="1" stop-color="#dcc3a2"/></linearGradient><linearGradient id="capsule-lid-color" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fffaf2"/><stop offset=".6" stop-color="#f4e7d4"/><stop offset="1" stop-color="#d8bfa2"/></linearGradient><linearGradient id="capsule-side" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e8d5b9"/><stop offset="1" stop-color="#bea486"/></linearGradient><pattern id="capsule-grain" width="30" height="25" patternUnits="userSpaceOnUse"><path d="M3 10h5m14 10h3" stroke="#b39675" stroke-width=".6" opacity=".18"/></pattern></defs>
+              <ellipse cx="184" cy="231" rx="124" ry="12" fill="#766071" opacity=".09"/>
+              <path d="m65 111 204-8 37 23-203 14Z" fill="#947965"/>
+              <path d="m77 112 185-7 29 17-183 10Z" fill="#b3967c"/>
+              <g class="capsule-chest-lid"><path d="M64 115V97c0-49 58-66 109-68 52-2 109 12 109 62v21Z" fill="url(#capsule-lid-color)" stroke="#e0cbb1"/><path d="M282 112V91c0-12-4-24-10-33l29 17c10 10 13 24 13 43l-15 10Z" fill="url(#capsule-side)"/><path d="M106 109V91c0-23 15-41 27-49" fill="none" stroke="var(--pink)" stroke-width="15"/><path d="M240 110V91c0-23-14-42-27-48" fill="none" stroke="var(--blue)" stroke-width="15"/><path d="M72 100c0-34 39-52 79-57" fill="none" stroke="#fffdf6" stroke-width="2" opacity=".8"/><path d="M64 107h218v8H64Z" fill="#d2b79b"/></g>
+              <path d="m64 120 214 0v85q0 13-15 14H80q-16-1-16-15Z" fill="url(#capsule-wood)"/>
+              <path d="m278 120 30-10v86q0 10-11 14l-19 9Z" fill="url(#capsule-side)"/>
+              <path d="M64 120h214v85q0 13-15 14H80q-16-1-16-15Z" fill="url(#capsule-grain)"/>
+              <path d="M101 120h17v99h-17Z" fill="var(--pink)" opacity=".85"/><path d="M232 120h17v99h-17Z" fill="var(--blue)" opacity=".9"/>
+              <path d="M64 122h214" stroke="#fff9ee" stroke-width="3"/>
+              <rect x="156" y="115" width="33" height="36" rx="8" fill="#c9aa7f"/><rect x="160" y="118" width="25" height="29" rx="6" fill="#f8e5c2"/><path d="M172 127c-8-6-14 7 0 13 14-6 8-19 0-13Z" fill="#bb8599"/>
+              <circle cx="78" cy="136" r="2" fill="#c8aa87"/><circle cx="264" cy="136" r="2" fill="#c8aa87"/><circle cx="78" cy="201" r="2" fill="#c8aa87"/><circle cx="264" cy="201" r="2" fill="#c8aa87"/>
+            </svg>
+            <span class="capsule-chest-tag" id="capsule-chest-tag" hidden></span>
+          </div>
+          <p class="capsule-chest-caption" id="capsule-chest-caption">Un pequeño cofre para tus grandes corazonadas.</p>
+          <p class="capsule-saved-note" id="capsule-storage-note" hidden></p>
+          <button class="discover-button" id="capsule-open" type="button" hidden>Abrir mi cápsula <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+          <button class="capsule-text-button" id="capsule-close" type="button" hidden>Cerrar mi cápsula</button>
+        </div>
+      </div>
+      <footer class="capsule-continuation"><p>Ahora solo falta saber si nos acompañas</p><a class="discover-button" id="capsule-attendance" href="#attendance-section">Confirmar mi asistencia <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a></footer>
+      <p class="sr-only" id="capsule-status" role="status" aria-live="polite" aria-atomic="true"></p>
+    </section>
+    <section class="attendance-section" id="attendance-section" aria-labelledby="attendance-title" tabindex="-1" data-mode="closed">
+      <header class="attendance-heading"><div class="attendance-keepsake" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M6 14h36v25H6Z"/><path d="m6 14 18 14 18-14M6 39l13-15m23 15L29 24"/><path d="M24 10c-6-5-11 5 0 11 11-6 6-16 0-11Z"/></svg></div><h2 id="attendance-title">¿Nos acompañas?</h2><p>Nos encantará compartir esta sorpresa contigo</p></header>
+      <div class="attendance-envelope-scene" id="attendance-envelope-scene">
+        <div class="attendance-paper" id="attendance-paper" hidden>
+          <form id="attendance-form" novalidate aria-label="Responder invitación">
+            <fieldset class="attendance-fields" id="attendance-fields"><legend>Tu respuesta, con cariño</legend>
+              <label class="attendance-label" for="attendance-name">Nombre del invitado <span>(obligatorio)</span></label><input class="attendance-input" id="attendance-name" type="text" maxlength="80" autocomplete="name" required aria-describedby="attendance-name-error"><p class="attendance-field-error" id="attendance-name-error" hidden></p>
+              <fieldset class="attendance-choice" id="attendance-choice" aria-describedby="attendance-response-error"><legend>¿Podrás estar con nosotros?</legend><div class="attendance-options"><label><input type="radio" name="attendance-response" value="yes"><span>Sí, ahí estaré</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-8"/></svg></label><label><input type="radio" name="attendance-response" value="no"><span>Esta vez no podré</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-8"/></svg></label></div></fieldset><p class="attendance-field-error" id="attendance-response-error" hidden></p>
+              <div class="attendance-guests-field" id="attendance-guests-field" hidden><label class="attendance-label" for="attendance-guests">Número de asistentes</label><select class="attendance-input" id="attendance-guests" aria-describedby="attendance-guests-help attendance-guests-error"></select><p class="attendance-help" id="attendance-guests-help"></p><p class="attendance-field-error" id="attendance-guests-error" hidden></p></div>
+              <label class="attendance-label" for="attendance-note">Nota para los anfitriones <span>(opcional)</span></label><textarea class="attendance-input attendance-note" id="attendance-note" maxlength="250" rows="3" aria-describedby="attendance-note-remaining attendance-note-error"></textarea><p class="attendance-characters" id="attendance-note-remaining">Quedan 250 caracteres</p><p class="attendance-field-error" id="attendance-note-error" hidden></p>
+              <button class="discover-button" id="attendance-save" type="submit">Guardar mi respuesta <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg></button>
+              <p class="attendance-field-error" id="attendance-register-error" hidden></p>
+            </fieldset>
+          </form>
+          <div class="attendance-result" id="attendance-result" hidden><h3 id="attendance-result-title" tabindex="-1">Tu respuesta</h3><p id="attendance-delivery-note"></p><p class="attendance-declined" id="attendance-declined" hidden>Gracias por avisarnos. Aunque sea a la distancia, formas parte de este momento</p><p class="attendance-memory-note" id="attendance-memory-note" hidden>No pudimos guardar los datos en el navegador. No permanecerán al cerrar la página.</p></div>
+          <div class="attendance-pass-area" id="attendance-pass-area" hidden><canvas class="attendance-pass" id="attendance-pass" role="img" aria-label="Tu pase personalizado" aria-describedby="attendance-pass-description"></canvas><p class="sr-only" id="attendance-pass-description"></p><p class="attendance-pass-loading" id="attendance-pass-loading" hidden>Preparando tu pase…</p><p class="attendance-pass-error" id="attendance-pass-error" hidden></p></div>
+          <div class="attendance-result-actions" id="attendance-result-actions" hidden><button class="discover-button" id="attendance-download" type="button" hidden>Descargar mi pase <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m-4-4 4 4 4-4M5 17v3h14v-3"/></svg></button><a class="discover-button attendance-whatsapp" id="attendance-whatsapp" href="#" target="_blank" rel="noopener noreferrer" hidden>Enviar por WhatsApp <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 5 16 7-16 7 3-7-3-7Zm3 7h13"/></svg></a><button class="attendance-text-button" id="attendance-edit" type="button">Editar mi respuesta</button><p class="attendance-download-status" id="attendance-download-status" role="status" aria-live="polite"></p></div>
+        </div>
+        <div class="attendance-envelope" aria-hidden="true"><svg viewBox="0 0 500 290" class="attendance-envelope-art"><defs><linearGradient id="attendance-envelope-paper" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff9ee"/><stop offset=".55" stop-color="#f2e6d3"/><stop offset="1" stop-color="#dfccb0"/></linearGradient><linearGradient id="attendance-envelope-fold" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fffbf3"/><stop offset="1" stop-color="#e6d4b8"/></linearGradient></defs><ellipse cx="250" cy="268" rx="176" ry="12" fill="#73566a" opacity=".10"/><rect x="47" y="71" width="406" height="181" rx="17" fill="#d8c2a5"/><path d="M52 77h396v162H52Z" fill="#b69b81" opacity=".45"/><g class="attendance-envelope-flap"><path d="M47 87V77q0-6 10-6h386q10 0 10 6v10L267 218q-17 12-34 0Z" fill="url(#attendance-envelope-fold)" stroke="#e6d4bd"/></g><path d="m47 90 163 113-153 46q-10-3-10-14Z" fill="url(#attendance-envelope-paper)"/><path d="m453 90-163 113 153 46q10-3 10-14Z" fill="url(#attendance-envelope-paper)"/><path d="m57 252 163-118q30-19 60 0l163 118Z" fill="url(#attendance-envelope-fold)" stroke="#e6d4bd"/><path d="m54 249 184-125" stroke="#fffdf5" stroke-width="2" opacity=".6"/><path d="m446 248-175-121" stroke="#fffdf5" stroke-width="2" opacity=".6"/><circle cx="250" cy="180" r="24" fill="var(--pink)" opacity=".95"/><circle cx="250" cy="180" r="19" fill="#f4d6de" stroke="#bd91a5" stroke-width=".8"/><path d="M250 173c-12-9-19 10 0 21 19-11 12-30 0-21Z" fill="var(--accent-pink)" opacity=".65"/><path d="m86 224 13-4 7 5-13 4Z" fill="var(--blue)" opacity=".85"/><path d="m393 223 13 4 8-4-13-4Z" fill="var(--pink)" opacity=".7"/></svg></div>
+      </div>
+      <button class="discover-button" id="attendance-open" type="button" aria-expanded="false" aria-controls="attendance-paper">Responder invitación <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 9 7 7 7-7"/></svg></button>
+      <p class="sr-only" id="attendance-status" role="status" aria-live="polite" aria-atomic="true"></p>
+    </section>
+    <p class="sr-only" id="invitation-status" role="status" aria-live="polite"></p>
+  </main>
+  <dialog class="family-photo-dialog" id="family-photo-dialog" aria-labelledby="family-photo-dialog-title">
+    <div class="family-photo-dialog-header"><h2 id="family-photo-dialog-title">Nuestra fotografía</h2><button type="button" id="close-family-photo" aria-label="Cerrar fotografía ampliada"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg><span>Cerrar</span></button></div>
+    <img id="family-photo-large" alt="" draggable="false" hidden>
+    <div class="family-photo-modal-placeholder" id="family-photo-modal-placeholder"><svg viewBox="0 0 80 70" aria-hidden="true"><path d="M11 19h15l6-8h17l6 8h14v39H11Z"/><circle cx="40" cy="38" r="13"/></svg><p>Un recuerdo que pronto compartiremos</p><span>Espacio reservado para nuestra fotografía</span></div>
+  </dialog>
+  <noscript><style>.entrance{display:none}.cover{visibility:visible;opacity:1;position:relative}.cover-reveal{opacity:1;transform:none}.color-half,.next-section-anchor{display:none}</style><p class="noscript-note">Activa JavaScript para abrir el regalo y jugar con los colores.</p></noscript>
+</body>
+</html>
